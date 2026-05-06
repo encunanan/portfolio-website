@@ -1,0 +1,516 @@
+/* =========================
+   GLOBAL STYLES
+========================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Barrio&family=Orbitron:wght@400..900&family=Oswald:wght@200..700&family=Rubik+Glitch&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #f1f1f1;
+  --text: #5d5d5d;
+  --muted: #9b9b9b;
+  --link-hover: #d4d4d3;
+  --header-bg: rgba(255, 255, 255, 0.8);
+  --img-bg: #f1f1f1;
+  --card-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  --border: #ccc;
+}
+
+.dark-mode {
+  --bg: #121212;
+  --text: #e8e8e8;
+  --muted: #c0c0c0;
+  --link-hover: #ffffff;
+  --header-bg: rgba(10, 10, 10, 0.9);
+  --img-bg: #1c1c1c;
+  --card-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+  --border: #2f2f2f;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  padding-top: 90px; 
+}
+
+.main {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* =========================
+   TYPOGRAPHY
+========================= */
+h1, h2, h3 {
+  font-family: 'Franklin Gothic Heavy', sans-serif;
+  font-weight: normal;
+}
+
+h1.logo a {
+  font-family: 'Franklin Gothic Heavy', sans-serif;
+  font-size: 20px;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+h2 {
+  font-size: 25px;
+  color: var(--text);
+  line-height: 100%;
+}
+
+h3 {
+  font-size: 15px;
+  color: var(--muted);
+  margin-top: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: var(--muted);
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: var(--link-hover);
+}
+
+.barrio-regular {
+  font-family: "Barrio", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.rubik-glitch-regular {
+  font-family: "Rubik Glitch", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.orbitron-regular {
+  font-family: "Orbitron", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.oswald-heavy {
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+
+/* =========================
+   HEADER
+========================= */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 75px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;   
+  padding: 0 2rem;
+  backdrop-filter: blur(6px);
+  z-index: 100;
+}
+
+.logo a {
+  font-family: 'Franklin Gothic Heavy', sans-serif;
+  font-size: 20px;
+  font-weight: normal;
+  color: var(--muted);
+  text-decoration: none;
+  line-height: 1;       
+  display: inline-block;
+  padding: 0;           
+  margin: 0;            
+  transition: color 0.3s;
+}
+
+.logo a:hover {
+  color: var(--text);
+  animation: logoFontCycle 1.4s ease-in-out 1;
+}
+
+@keyframes logoFontCycle {
+  0% {
+    font-family: 'Franklin Gothic Heavy', sans-serif;
+  }
+  20% {
+    font-family: 'Barrio', sans-serif;
+  }
+  40% {
+    font-family: 'Rubik Glitch', sans-serif;
+  }
+  60% {
+    font-family: 'Orbitron';
+  }
+  80% {
+    font-family: 'Oswald', sans-serif;
+  }
+  100% {
+    font-family: 'Franklin Gothic Heavy', sans-serif;
+  }
+}
+
+.header-nav {
+  display: flex;
+  gap: 2rem;            
+  align-items: center;
+}
+
+.header-nav a {
+  font-size: 18px;
+  font-family: 'Franklin Gothic Medium', sans-serif;
+  color: var(--muted);
+  text-decoration: none;
+  line-height: 1;       
+  display: inline-block;
+  padding: 0;           
+  margin: 0;           
+}
+
+.header-nav a:hover {
+  color: var(--text);
+}
+
+.header-nav a.active {
+  color: var(--text);
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: 'Franklin Gothic Medium', sans-serif;
+  color: var(--muted);
+}
+
+.theme-toggle-input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.toggle-switch {
+  position: relative;
+  width: 48px;
+  height: 24px;
+  border-radius: 999px;
+  background: #121212;
+  border: 1px solid var(--muted);
+  display: inline-flex;
+  align-items: center;
+  padding: 2px;
+  cursor: pointer;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.toggle-knob {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--muted);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.theme-toggle-input:checked + .toggle-switch {
+  background: var(--text);
+  border-color: var(--text);
+}
+
+.theme-toggle-input:checked + .toggle-switch .toggle-knob {
+  transform: translateX(24px);
+  background: var(--bg);
+}
+
+.theme-toggle-input:focus-visible + .toggle-switch {
+  outline: 2px solid var(--text);
+  outline-offset: 3px;
+}
+
+/* =========================
+   HOMEPAGE GALLERY GRID
+========================= */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.column {
+  flex: 1 1 calc(50% - 16px);
+}
+
+.content {
+  background: transparent;
+  padding: 10px;
+  text-align: left;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: auto;
+  background-color: var(--img-bg);
+}
+
+/* =========================
+   ABOUT PAGE
+========================= */
+.about-top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.contact-links {
+  display: flex;
+  flex-direction: column;  
+  align-items: flex-start; 
+  gap: 1rem;
+  padding-left: 2rem; 
+}
+
+.contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 18px;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.contact-link img {
+  width: 35px;
+  height: 35px;
+}
+
+.contact-link:hover {
+  color: var(--muted);
+}
+
+.about-text {
+  flex: 1 1 65%;
+  font-size: 18px;
+  color: var(--text);
+}
+
+/* PHOTO GRID */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: .5rem;
+}
+
+.photo-grid img {
+  width: 100%;
+  height: auto;
+  background-color: var(--img-bg);
+}
+
+/* =========================
+   RESUME PAGE
+========================= */
+.resume-pdf {
+  display: block;
+  width: 50%;        
+  height: 90vh;      
+  margin: 2rem auto;
+  border: 1px solid var(--border);
+  box-shadow: var(--card-shadow);
+}
+
+/* =========================
+   PROJECT PAGE
+========================= */
+.project-page {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin: 2rem auto;
+  max-width: 1400px;   
+  padding: 0 2rem;    
+}
+
+.project-text {
+  flex: 1 1 30%;
+  max-width: 30%;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.project-photos {
+  flex: 1 1 65%;
+  max-width: 65%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  gap: .5rem;
+}
+
+/* On smaller screens → 1 column */
+@media screen and (max-width: 700px) {
+  .project-photos {
+    grid-template-columns: 1fr;
+  }
+}
+
+.project-photos img {
+  width: 100%;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.project-photos img:hover {
+  transform: scale(1.02);
+}
+
+/* Stack on mobile */
+@media screen and (max-width: 900px) {
+  .project-text, .project-photos {
+    max-width: 100%;
+    flex: 1 1 100%;
+  }
+}
+
+/* LIGHTBOX */
+.lightbox {
+  display: none; 
+  position: fixed;
+  z-index: 200;
+  padding-top: 60px;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  overflow: hidden;
+  background-color: rgba(0,0,0,0.9);
+}
+
+.lightbox-content {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 80vh;
+  width: auto;        
+  height: auto;       
+  object-fit: contain; 
+}
+
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  color: #fff;
+  font-size: 40px;
+  cursor: pointer;
+}
+
+.lightbox-controls .prev,
+.lightbox-controls .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  color: #fff;
+  font-size: 40px;
+  padding: 16px;
+  user-select: none;
+}
+
+.prev { left: 20px; }
+.next { right: 20px; }
+
+/* =========================
+   FOOTER
+========================= */
+footer {
+  margin-top: 50px;
+  padding: 20px;
+  text-align: center;
+  background: transparent;
+}
+
+.footer-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.footer-list li a {
+  color: var(--text);
+  font-size: 16px;
+}
+
+.footer-list li a:hover {
+  color: var(--muted);
+}
+
+.copyright-format {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.footer-menu {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.footer-menu a {
+  color: #ccc;
+  text-decoration: none;
+  padding: 0 14px;
+  font-size: 16px;
+}
+
+/* adds the vertical divider */
+.footer-menu a + a {
+  border-left: 1px solid #555;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media screen and (max-width: 900px) {
+  .column {
+    flex: 1 1 100%;
+  }
+
+  header {
+    flex-direction: column;       
+    align-items: center;           
+    justify-content: center;
+    gap: 0.5rem;                  
+    height: auto;
+    padding: 1rem 0;
+  }
+
+  .header-nav {
+    display: flex;
+    flex-direction: column;     
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0;                
+  }
+
+  .header-nav a {
+    margin: 0;                    
+    font-size: 18px;
+  }
+}

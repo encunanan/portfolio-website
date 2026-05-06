@@ -1,0 +1,15 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Source/working files — not served to the site
+**/working/
+
+# InDesign linked assets — source files for the books project
+assets/books/assets/
+
+# Raw uncompressed drone footage — compress with HandBrake before adding
+assets/drone/assets/
+
+# PNG source copies — JPG versions are used on the site
+assets/museum of death/site images/PNG images/
