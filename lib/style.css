@@ -2,7 +2,8 @@
    GLOBAL STYLES
 ========================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Barrio&family=Orbitron:wght@400..900&family=Oswald:wght@200..700&family=Rubik+Glitch&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barrio&family=Montserrat:wght@400..700&family=Orbitron:wght@400..900&family=Oswald:wght@200..700&family=Rubik+Glitch&display=swap');
+
 
 * {
   box-sizing: border-box;
@@ -11,6 +12,8 @@
 }
 
 :root {
+  --heading-font: 'Montserrat', sans-serif;
+  --ui-font: 'Montserrat', sans-serif;
   --bg: #f1f1f1;
   --text: #5d5d5d;
   --muted: #9b9b9b;
@@ -36,8 +39,8 @@ body {
   font-family: Arial, sans-serif;
   background-color: var(--bg);
   color: var(--text);
-  line-height: 1.5;
-  padding-top: 90px; 
+  line-height: 1.4;
+  padding-top: 90px;
 }
 
 .main {
@@ -50,27 +53,30 @@ body {
    TYPOGRAPHY
 ========================= */
 h1, h2, h3 {
-  font-family: 'Franklin Gothic Heavy', sans-serif;
-  font-weight: normal;
+  font-family: var(--heading-font);
+  font-weight: 700;
 }
 
 h1.logo a {
-  font-family: 'Franklin Gothic Heavy', sans-serif;
+  font-family: var(--ui-font);
   font-size: 20px;
   color: var(--muted);
   text-decoration: none;
 }
 
 h2 {
-  font-size: 25px;
+  font-size: 28px;
   color: var(--text);
-  line-height: 100%;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
 }
 
 h3 {
-  font-size: 15px;
+  font-size: 14px;
+  font-weight: 400;
   color: var(--muted);
   margin-top: 10px;
+  margin-bottom: 0.75rem;
 }
 
 a {
@@ -127,9 +133,9 @@ header {
 }
 
 .logo a {
-  font-family: 'Franklin Gothic Heavy', sans-serif;
+  font-family: var(--ui-font);
   font-size: 20px;
-  font-weight: normal;
+  font-weight: 700;
   color: var(--muted);
   text-decoration: none;
   line-height: 1;       
@@ -146,7 +152,7 @@ header {
 
 @keyframes logoFontCycle {
   0% {
-    font-family: 'Franklin Gothic Heavy', sans-serif;
+    font-family: var(--ui-font);
   }
   20% {
     font-family: 'Barrio', sans-serif;
@@ -161,7 +167,7 @@ header {
     font-family: 'Oswald', sans-serif;
   }
   100% {
-    font-family: 'Franklin Gothic Heavy', sans-serif;
+    font-family: var(--ui-font);
   }
 }
 
@@ -173,13 +179,14 @@ header {
 
 .header-nav a {
   font-size: 18px;
-  font-family: 'Franklin Gothic Medium', sans-serif;
+  font-family: var(--ui-font);
+  font-weight: 400;
   color: var(--muted);
   text-decoration: none;
-  line-height: 1;       
+  line-height: 1;
   display: inline-block;
-  padding: 0;           
-  margin: 0;           
+  padding: 0;
+  margin: 0;
 }
 
 .header-nav a:hover {
@@ -194,7 +201,7 @@ header {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  font-family: 'Franklin Gothic Medium', sans-serif;
+  font-family: var(--ui-font);
   color: var(--muted);
 }
 
@@ -278,49 +285,77 @@ img {
   margin-bottom: 3rem;
 }
 
-.contact-links {
+.about-left {
+  flex: 0 0 28%;
   display: flex;
-  flex-direction: column;  
-  align-items: flex-start; 
-  gap: 1rem;
-  padding-left: 2rem; 
+  flex-direction: column;
+  gap: 1.25rem;
 }
 
-.contact-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 18px;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-.contact-link img {
-  width: 35px;
-  height: 35px;
-}
-
-.contact-link:hover {
-  color: var(--muted);
-}
-
-.about-text {
-  flex: 1 1 65%;
-  font-size: 18px;
-  color: var(--text);
-}
-
-/* PHOTO GRID */
-.photo-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: .5rem;
-}
-
-.photo-grid img {
+.about-left > img {
   width: 100%;
   height: auto;
   background-color: var(--img-bg);
+}
+
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 5px 1rem 5px 5px;
+  border: 1.5px solid var(--border);
+  border-radius: 999px;
+  color: var(--text);
+  font-size: 15px;
+  font-family: var(--ui-font);
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.contact-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.contact-icon img {
+  width: 34px;
+  height: 34px;
+  object-fit: cover;
+  background-color: transparent;
+}
+
+.contact-label {
+  flex: 1;
+  text-align: center;
+}
+
+.contact-link:hover {
+  background: var(--text);
+  border-color: var(--text);
+  color: var(--bg);
+}
+
+.contact-link:hover .contact-icon img {
+  filter: invert(1);
+}
+
+.about-text {
+  flex: 1 1 0;
+  font-size: 18px;
+  color: var(--text);
 }
 
 /* =========================
@@ -351,7 +386,7 @@ img {
   flex: 1 1 30%;
   max-width: 30%;
   font-size: 18px;
-  line-height: 1.6;
+  line-height: 1.4;
 }
 
 .project-photos {
@@ -493,24 +528,54 @@ footer {
   }
 
   header {
-    flex-direction: column;       
-    align-items: center;           
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    gap: 0.5rem;                  
+    gap: 0.5rem;
     height: auto;
     padding: 1rem 0;
   }
 
   .header-nav {
     display: flex;
-    flex-direction: column;     
+    flex-direction: column;
     align-items: center;
     gap: 0.5rem;
-    margin-top: 0;                
+    margin-top: 0;
   }
 
   .header-nav a {
-    margin: 0;                    
+    margin: 0;
     font-size: 18px;
+  }
+
+  /* About page */
+  .about-top {
+    flex-direction: column;
+  }
+
+  .about-left {
+    flex: 1 1 100%;
+  }
+
+  .about-left > img {
+    max-height: 60vw;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .contact-links {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .contact-link {
+    flex: 1 1 auto;
+  }
+
+  .about-text {
+    flex: 1 1 100%;
+    font-size: 16px;
   }
 }
