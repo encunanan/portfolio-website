@@ -422,6 +422,39 @@ img {
   flex: 1;
   display: flex;
   flex-direction: column;
+  gap: 2rem;
+}
+
+.resume-summary {
+  max-width: 720px;
+  margin-bottom: 2.5rem;
+}
+
+.resume-summary p {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--text);
+}
+
+.resume-contact-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.resume-contact-list li {
+  font-size: 14px;
+  color: var(--text);
+}
+
+.resume-contact-list a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.resume-contact-list a:hover {
+  text-decoration: underline;
 }
 
 .resume-section-title {
@@ -550,6 +583,19 @@ img {
 }
 
 .resume-entry > p:last-child {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--text);
+}
+
+.resume-bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding-left: 1.1rem;
+}
+
+.resume-bullets li {
   font-size: 15px;
   line-height: 1.65;
   color: var(--text);
