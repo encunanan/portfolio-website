@@ -665,6 +665,39 @@ img {
   transform: scale(1.02);
 }
 
+/* Tall email screenshots: three across, tops aligned */
+.project-photos--emails {
+  grid-template-columns: repeat(3, 1fr);
+  align-items: start;
+}
+
+.project-photos--emails img {
+  margin: 0;
+}
+
+@media screen and (max-width: 700px) {
+  .project-photos--emails {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Lightbox for tall images: full width, scroll to read */
+.lightbox--tall {
+  overflow-y: auto;
+  padding-bottom: 60px;
+}
+
+.lightbox--tall .lightbox-content {
+  max-height: none;
+  max-width: min(90%, 722px);
+}
+
+.lightbox--tall .close,
+.lightbox--tall .lightbox-controls .prev,
+.lightbox--tall .lightbox-controls .next {
+  position: fixed;
+}
+
 /* Stack on mobile */
 @media screen and (max-width: 900px) {
   .project-text, .project-photos {
