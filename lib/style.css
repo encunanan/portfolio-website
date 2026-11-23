@@ -665,10 +665,52 @@ img {
   transform: scale(1.02);
 }
 
-/* Tall email screenshots: three across, tops aligned */
-.project-photos--emails {
-  grid-template-columns: repeat(3, 1fr);
-  align-items: start;
+/* Case study text blocks */
+.case-label {
+  font-family: var(--ui-font);
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  margin-bottom: 0.25rem;
+}
+
+.case-heading {
+  font-family: var(--ui-font);
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin: 1.75rem 0 0.4rem;
+}
+
+.case-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem 1.5rem;
+  font-size: 15px;
+  line-height: 1.3;
+}
+
+.case-stat {
+  display: block;
+  font-family: var(--ui-font);
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--text);
+}
+
+/* Tall email screenshots: three balanced columns, no gaps */
+.project-photos.project-photos--emails {
+  display: flex;
+  align-items: flex-start;
+  gap: .5rem;
+}
+
+.project-photos--emails .email-col {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
 }
 
 .project-photos--emails img {
@@ -676,25 +718,26 @@ img {
 }
 
 @media screen and (max-width: 700px) {
-  .project-photos--emails {
-    grid-template-columns: 1fr;
+  .project-photos.project-photos--emails {
+    flex-direction: column;
   }
 }
 
 /* Lightbox for tall images: full width, scroll to read */
-.lightbox--tall {
+.lightbox.lightbox--tall {
   overflow-y: auto;
+  overscroll-behavior: contain;
   padding-bottom: 60px;
 }
 
-.lightbox--tall .lightbox-content {
+.lightbox.lightbox--tall .lightbox-content {
   max-height: none;
   max-width: min(90%, 722px);
 }
 
-.lightbox--tall .close,
-.lightbox--tall .lightbox-controls .prev,
-.lightbox--tall .lightbox-controls .next {
+.lightbox.lightbox--tall .close,
+.lightbox.lightbox--tall .lightbox-controls .prev,
+.lightbox.lightbox--tall .lightbox-controls .next {
   position: fixed;
 }
 
@@ -843,5 +886,12 @@ footer {
   .about-text {
     flex: 1 1 100%;
     font-size: 16px;
+  }
+}
+
+/* Stacked mobile header is taller than the desktop one: keep content clear of it */
+@media screen and (max-width: 900px) {
+  body {
+    padding-top: 185px;
   }
 }
